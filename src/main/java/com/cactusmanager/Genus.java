@@ -2,10 +2,10 @@ package com.cactusmanager;
 
 public enum Genus {
 
-    FEROCACTUS, 
-    MATUCANA, 
-    GYMNOCALYCIUM, 
-    AZTEKIUM, 
+    FEROCACTUS,
+    MATUCANA,
+    GYMNOCALYCIUM,
+    AZTEKIUM,
     LEUCHTENBERGIA,
     CORYPHANTHA,
     THELOCACTUS,
@@ -15,5 +15,9 @@ public enum Genus {
     FRAILEA,
     ESCOBARIA,
     ECHINOPSIS,
-    LOPHOPHORA
+    LOPHOPHORA,
+    SULCOREBUTIA,
+
+    NN,
+    DELETED
 }

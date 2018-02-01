@@ -2,6 +2,7 @@ package com.cactusmanager;
 
 import java.io.*;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class HandleManager implements Serializable {
 
@@ -31,24 +32,34 @@ public class HandleManager implements Serializable {
         return null;
     }
 
-    public Cacti[] findName(String species) { // It is not ready yet. Needs to return a filtered array.
-        int counter = 0;
-        Cacti[] cactiFiltered = new Cacti[counter];
+    public ArrayList<Cacti> findGenus(Genus genus) {
+        ArrayList<Cacti> cactiFiltered = new ArrayList();
         for (Cacti cactus : cactiList) {
-            if (cactus.getSpecies().equals(species)) {
-                return cactiFiltered;
+            if (cactus.getGenus().equals(genus)) {
+                cactiFiltered.add(cactus);
             }
         }
-        return null;
+        return cactiFiltered;
     }
 
-    public Cacti findPlantingYear(int ID) { // Should work as findName: should return an array.
+    public ArrayList<Cacti> findSpecies(String species) {
+        ArrayList<Cacti> cactiFiltered = new ArrayList();
         for (Cacti cactus : cactiList) {
-            if (Thing.actualYear - cactus.getPlantingYear() > 3) {
-                return cactus;
+            if (cactus.getSpecies().equals(species)) {
+                cactiFiltered.add(cactus);
             }
         }
-        return null;
+        return cactiFiltered;
+    }
+
+    public ArrayList<Cacti> findToPlant() {
+        ArrayList<Cacti> cactiFiltered = new ArrayList();
+        for (Cacti cactus : cactiList) {
+            if (Thing.actualYear - cactus.getPlantingYear() > 3) {
+                cactiFiltered.add(cactus);
+            }
+        }
+        return cactiFiltered;
     }
 
     public void exit() {

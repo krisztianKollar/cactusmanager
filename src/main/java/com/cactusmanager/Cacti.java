@@ -1,8 +1,5 @@
 package com.cactusmanager;
 
-
-import java.io.Serializable;
-
 public class Cacti extends Thing {
 
     private int plantingYear;
