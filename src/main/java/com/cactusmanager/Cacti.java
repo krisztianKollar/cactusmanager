@@ -6,6 +6,8 @@ import java.io.Serializable;
 public class Cacti extends Thing {
 
     private int plantingYear;
+    private static final long serialVersionUID = 123456789L;
+
 
     public Cacti(int catalogID, Genus genus, String species, int plantingYear) {
         super(catalogID, genus, species);
@@ -19,12 +21,14 @@ public class Cacti extends Thing {
         return plantingYear;
     }
 
-    public void setPlantingYear() {
-
+    public void setPlantingYear(int plantingYear) {
+        this.plantingYear = plantingYear;
     }
 
     @Override
     public String toString() {
         return catalogID + ". " + genus.name() + " " + species + ", planted in " + plantingYear;
     }
+
+
 }

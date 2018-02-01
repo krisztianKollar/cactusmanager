@@ -6,6 +6,8 @@ import java.lang.reflect.Array;
 public class HandleManager implements Serializable {
 
     private Cacti[] cactiList;
+    private static final long serialVersionUID = 1234567L;
+
 
     public HandleManager() {
         cactiList = new Cacti[0];
@@ -29,7 +31,7 @@ public class HandleManager implements Serializable {
         return null;
     }
 
-    public Cacti[] findName(String species) { // It is not ready yet.
+    public Cacti[] findName(String species) { // It is not ready yet. Needs to return a filtered array.
         int counter = 0;
         Cacti[] cactiFiltered = new Cacti[counter];
         for (Cacti cactus : cactiList) {

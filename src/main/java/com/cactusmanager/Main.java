@@ -86,7 +86,25 @@ public class Main {
 
     private static void handleChange() {
 
-        handleFindID(); // az adott objecten setterrel --> plantedNow() : set plantingYear to actualYear
+        System.out.println("Please enter the ID of the wanted cactus!");
+        int id = getNumberFromUser();
+        Cacti cactus = hm.findID(id);
+        if (cactus == null) {
+            System.out.println("You can find nothing with this ID.\n");
+        } else {
+            System.out.format("The wanted cactus is: %s\n", cactus);
+        }
+        System.out.println("What is the Genus of your cactus?");
+        Genus genus = getGenusFromUser();
+        cactus.setGenus(genus);
+        System.out.println("What is the species of your plant?");
+        String species = scanner.nextLine();
+        cactus.setSpecies(species);
+        System.out.println("What was the year of planting?");
+        int plantingYear = getYearFromUser();
+        cactus.setPlantingYear(plantingYear);
+        System.out.println("The cactus has changed with these values: " + cactus.toString());
+
 
     }
 
@@ -104,7 +122,7 @@ public class Main {
     }
 
     private static void handleAdd() {
-        System.out.println("What is the ID for this plant?"); // What if the given ID is already taken?!
+        System.out.println("What is the ID for this plant?");
         int catalogID = getNumberFromUser();
         System.out.println("What is the Genus of your cactus?");
         Genus genus = getGenusFromUser();
@@ -120,22 +138,19 @@ public class Main {
     private static int getNumberFromUser() {
         int id;
         Cacti[] cactiList = hm.getCactiList();
+        label:
         while (true) {
 
             try {
             id = Integer.parseInt(scanner.nextLine());
-            break;
 
-//                for (Cacti cactus : cactiList) {
-//                    if (id = Integer.parseInt(scanner.nextLine()) && id != cactus.getCatalogID()) {
-//                        System.out.println("WTF?!");
-//                        //break;
-//                    } else {
-//                        System.out.println("The given ID is taken, please try an other!");
-//                        continue;  //getNumberFromUser();
-//                    }
-//                }
-//                getNumberFromUser();
+                for (Cacti cactus : cactiList) {
+                    if (id == cactus.getCatalogID()) {
+                        System.out.println("The given ID is taken, please try an other!");
+                        continue label;
+                    }
+                }
+                break;
 
             }
             catch (Exception e) {
